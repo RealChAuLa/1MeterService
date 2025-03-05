@@ -49,3 +49,7 @@ def create_user_in_db(username, user_data):
 # Function to get user
 def get_user(username):
     return database.child('user_details').child(username).get()
+
+#Function to get product_id
+def get_product_id(username):
+    return database.child('user_details').child(username).child('product_id').get()
