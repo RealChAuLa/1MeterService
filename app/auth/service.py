@@ -1,5 +1,5 @@
-from app.db.firebase import user_exists, create_user_in_db, get_user
-from app.core.security import hash_password, verify_password, create_access_token
+from app.db.firebase import user_exists, create_user_in_db, get_user, get_product_id
+from app.core.security import hash_password, verify_password
 from app.core.exceptions import AuthError, BadRequestError
 from app.auth.models import UserSignUp, UserSignIn
 
@@ -45,10 +45,11 @@ class AuthService:
             raise AuthError("Invalid username or password")
 
         # Generate access token
-        access_token = create_access_token({"sub": user_data.username})
+        #access_token = create_access_token({"sub": user_data.username})
 
         return {
-            "access_token": access_token,
-            "token_type": "bearer",
-            "username": user_data.username
+            #"access_token": access_token,
+            #"token_type": "bearer",
+            "username": user_data.username,
+            "product_id": get_product_id(user_data.username)
         }
