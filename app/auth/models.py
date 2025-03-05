@@ -4,7 +4,7 @@ class UserSignUp(BaseModel):
     username: str = Field(..., min_length=3, max_length=50)
     email: EmailStr
     password: str = Field(..., min_length=6)
-    product_id: str = "1112"  # Default value as specified
+    product_id: str = Field(..., min_length=4, max_length=50)
 
 class UserSignIn(BaseModel):
     username: str
@@ -13,3 +13,7 @@ class UserSignIn(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+
+class User(BaseModel):
+    username: str
+    product_id: str
