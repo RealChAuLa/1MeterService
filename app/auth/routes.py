@@ -18,7 +18,7 @@ async def login_user(user_data: UserSignIn):
     """
     Authenticate a user
     - Verifies username and password
-    - Returns a JWT token for authenticated API access
+    - Returns the username
     - Returns the user's product_id
     """
     return AuthService.signin(user_data)
